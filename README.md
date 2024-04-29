@@ -31,6 +31,8 @@ b.toBin() // 101
 
 ### BitsN (using bigint)
 ```ts
+import {BitsN} from '@maks11060/bits'
+
 const Flags = {
   flag1: 0n,
   flag2: 1n,
