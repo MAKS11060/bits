@@ -1,0 +1,46 @@
+# Crypto utils
+
+[![JSR][JSR badge]][JSR]
+<!-- [![Publish workflow][Publish workflow badge]][Publish workflow] -->
+
+[JSR]: https://jsr.io/@maks11060/bits
+[JSR badge]: https://jsr.io/badges/@maks11060/bits?v=0.0.1
+<!-- [Publish workflow]: https://github.com/MAKS11060/bits/actions/workflows/publish.yml
+[Publish workflow badge]: https://github.com/maks11060/bits/actions/workflows/publish.yml/badge.svg -->
+
+Bit manipulation utility
+
+
+### Bits
+```ts
+import {Bits} from '@maks11060/bits'
+
+enum Flags {
+  flag1 = 0,
+  flag2 = 1,
+  flag3 = 2,
+}
+const b = new Bits<Flags>()
+
+b.set(Flags.flag1)
+b.clear(Flags.flag2)
+b.toggle(Flags.flag3)
+b.value   // 5
+b.toBin() // 101
+```
+
+### BitsN (using bigint)
+```ts
+const Flags = {
+  flag1: 0n,
+  flag2: 1n,
+  flag3: 2n,
+} as const
+const b = BitsN.from<typeof Flags>(0)
+
+b.set(Flags.flag1)
+b.clear(Flags.flag2)
+b.toggle(Flags.flag3)
+b.value   // 5n
+b.toBin() // 101n
+```
