@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno test --watch
 
-import {assertEquals} from 'https://deno.land/std/assert/mod.ts'
+import {assertEquals} from 'jsr:@std/assert'
 import {BitsN} from '../mod.ts'
 
 Deno.test('BitsN from', () => {
