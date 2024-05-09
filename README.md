@@ -1,4 +1,7 @@
-# Bits utils
+# Bits manipulation utility
+
+[![JSR][JSR badge]][JSR]
+[![CI][CI badge]][CI]
 
  <!-- https://jsr.io/docs/badges -->
 [JSR]: https://jsr.io/@maks11060/bits
@@ -7,7 +10,7 @@
 [CI]: https://github.com/maks11060/bits/actions/workflows/ci.yml
 [CI badge]: https://github.com/maks11060/bits/actions/workflows/ci.yml/badge.svg
 
-Bit manipulation utility
+## Usage
 
 ### Bits
 ```ts
