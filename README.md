@@ -1,15 +1,13 @@
-# Crypto utils
+# Bits utils
 
-[![JSR][JSR badge]][JSR]
-<!-- [![Publish workflow][Publish workflow badge]][Publish workflow] -->
-
+ <!-- https://jsr.io/docs/badges -->
 [JSR]: https://jsr.io/@maks11060/bits
-[JSR badge]: https://jsr.io/badges/@maks11060/bits?v=0.0.01
-<!-- [Publish workflow]: https://github.com/MAKS11060/bits/actions/workflows/publish.yml
-[Publish workflow badge]: https://github.com/maks11060/bits/actions/workflows/publish.yml/badge.svg -->
+[JSR badge]: https://jsr.io/badges/@maks11060/bits
+<!-- https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge -->
+[CI]: https://github.com/maks11060/bits/actions/workflows/ci.yml
+[CI badge]: https://github.com/maks11060/bits/actions/workflows/ci.yml/badge.svg
 
 Bit manipulation utility
-
 
 ### Bits
 ```ts

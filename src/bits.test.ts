@@ -51,7 +51,6 @@ Deno.test('Bits write', () => {
 
   b.write(2, 4, 6)
   assertEquals(b.toBin(), '1010100')
-  console.log(b.value)
 })
 Deno.test('Bits write enum', () => {
   enum Flags {
