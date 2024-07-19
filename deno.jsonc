@@ -1,7 +1,12 @@
 {
   "name": "@maks11060/bits",
-  "version": "0.0.2",
+  "version": "0.0.0",
   "lock": false,
+  "tasks": {
+    "ci": "deno task publish-dry-run --allow-dirty && deno task test",
+    "test": "deno test -A",
+    "publish-dry-run": "deno publish --dry-run"
+  },
   "exports": "./mod.ts",
   "publish": {
     "exclude": [

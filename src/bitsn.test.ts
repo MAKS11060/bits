@@ -3,6 +3,22 @@
 import {assertEquals} from 'jsr:@std/assert'
 import {BitsN} from '../mod.ts'
 
+Deno.test('BitsN Instance', () => {
+  const Flags = BitsN.Instance({
+    option_1: 0n,
+    option_2: 1n,
+    option_3: 2n,
+  })
+  const flags = Flags.now()
+
+  flags.set(Flags.flags.option_1)
+  flags.has(Flags.flags.option_2)
+  flags.toggle(Flags.flags.option_3)
+
+  assertEquals(flags.value, 5n)
+  assertEquals(flags.toBin(), '101')
+})
+
 Deno.test('BitsN from', () => {
   const b = new BitsN(1234)
   assertEquals(b.value, 1234n)

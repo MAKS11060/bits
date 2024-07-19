@@ -3,6 +3,23 @@
 import {assertEquals} from 'jsr:@std/assert'
 import {Bits} from '../mod.ts'
 
+Deno.test('Bits Instance', () => {
+  const Flags = Bits.Instance({
+    option_1: 0,
+    option_2: 1,
+    option_3: 2,
+  })
+
+  const flags = Flags.now()
+
+  flags.set(Flags.flags.option_1)
+  flags.has(Flags.flags.option_2)
+  flags.toggle(Flags.flags.option_3)
+
+  assertEquals(flags.value, 5)
+  assertEquals(flags.toBin(), '101')
+})
+
 Deno.test('Bits from', () => {
   const b = new Bits(1234)
   assertEquals(b.value, 1234)
@@ -52,6 +69,7 @@ Deno.test('Bits write', () => {
   b.write(2, 4, 6)
   assertEquals(b.toBin(), '1010100')
 })
+
 Deno.test('Bits write enum', () => {
   enum Flags {
     Read,
