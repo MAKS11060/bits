@@ -28,7 +28,7 @@
  *   flag3 = 2,
  * }
  *
- * const bits = Bits.from<Flags>(0)
+ * const bits = new Bits<Flags>(0)
  *
  * bits.set(Flags.flag1)
  * bits.clear(Flags.flag2)
