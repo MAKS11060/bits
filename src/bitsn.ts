@@ -1,7 +1,9 @@
+type toUnion<T extends bigint | Record<string, bigint>> = T extends bigint
+  ? T
+  : T[keyof T]
+
 /**
- * @module
- *
- * This module contains a class for working with bits (using bigint)
+ * A utility class for working with big integers as bitsets.
  *
  * @example BitsN.Instance
  * ```ts
@@ -38,32 +40,6 @@
  * b.value   // 5
  * b.toBin() // 101
  * ```
- */
-
-type toUnion<T extends bigint | Record<string, bigint>> = T extends bigint
-  ? T
-  : T[keyof T]
-
-/**
- * A utility class for working with big integers as bitsets.
- *
- * @example
- * ```ts
- * const Flags = BitsN.Instance({
- *   option_1: 0n,
- *   option_2: 1n,
- *   option_3: 2n,
- * })
- *
- * const flags = Flags.now()
- *
- * flags.set(Flags.flags.option_1)
- * flags.has(Flags.flags.option_2)
- * flags.toggle(Flags.flags.option_3)
- *
- * flags.value   // 5n
- * flags.toBin() // '101'
- *  ```
  */
 export class BitsN<Flags extends bigint | Record<string, bigint> = bigint> {
   #value: bigint

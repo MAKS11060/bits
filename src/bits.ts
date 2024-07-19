@@ -1,9 +1,11 @@
+type toUnion<T extends number | Record<string, number>> = T extends number
+  ? T
+  : T[keyof T]
+
 /**
- * @module
+ * A utility class for working with bitsets.
  *
- * This module contains a class for working with bits
- *
- * @example Bits.Instance()
+ * @example
  * ```ts
  * const Flags = Bits.Instance({
  *   option_1: 0,
@@ -16,9 +18,10 @@
  * flags.set(Flags.flags.option_1)
  * flags.has(Flags.flags.option_2)
  * flags.toggle(Flags.flags.option_3)
+ * flags.value // 5
  * ```
  *
- * @example Use `enum`
+ * @example
  * ```ts
  * import {Bits} from '@maks11060/bits'
  *
@@ -35,30 +38,6 @@
  * bits.toggle(Flags.flag3)
  * bits.value   // 5
  * bits.toBin() // 101
- * ```
- */
-
-type toUnion<T extends number | Record<string, number>> = T extends number
-  ? T
-  : T[keyof T]
-
-/**
- * A utility class for working with bitsets.
- *
- * @example
- * ```ts
- * enum Flags {
- *   flag1 = 0,
- *   flag2 = 1,
- *   flag3 = 2,
- * }
- * const b = new Bits<Flags>()
- *
- * b.set(Flags.flag1)
- * b.clear(Flags.flag2)
- * b.toggle(Flags.flag3)
- * b.value   // 5
- * b.toBin() // 101
  * ```
  */
 export class Bits<Flags extends number | Record<string, number> = number> {
