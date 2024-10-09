@@ -19,7 +19,7 @@ type BitSetInstance<
 }
 
 /**
- * Represents a bit set with methods to manipulate and retrieve bit values.
+ * Represents a {@linkcode BitSet} with methods to manipulate and retrieve `bit` values.
  *
  * @example
  * ```ts
@@ -88,7 +88,7 @@ export class BitSet<
   }
 
   /**
-   * Returns a bit value based on the given bit number.
+   * Returns a `bit` value based on the given bit number.
    * @param {number | bigint} n
    * @returns {number | bigint}
    */
@@ -101,7 +101,7 @@ export class BitSet<
   }
 
   /**
-   * Clears all bits in the bit set.
+   * Clears all `bits` in the bit set.
    * @returns {this}
    */
   clear(): this {
@@ -113,7 +113,7 @@ export class BitSet<
   }
 
   /**
-   * Deletes the specified bit from the bit set.
+   * Deletes the specified `bit` from the bit set.
    * @param {keyof T | number} bit
    * @returns {this}
    */
@@ -132,7 +132,7 @@ export class BitSet<
   }
 
   /**
-   * Gets the value of the specified bit.
+   * Gets the value of the specified `bit`.
    * @param {keyof T | number} bit
    * @returns {ToType<V>}
    */
@@ -149,7 +149,7 @@ export class BitSet<
   }
 
   /**
-   * Checks if the specified bit is set.
+   * Checks if the specified `bit` is set.
    * @param {keyof T | number} bit
    * @returns {boolean}
    */
@@ -185,7 +185,7 @@ export class BitSet<
   }
 
   /**
-   * Sets multiple bits in the bit set.
+   * Sets multiple `bits` in the bit set.
    * @param {...(keyof T)[] | number[]} bits
    * @returns {this}
    */
@@ -199,7 +199,7 @@ export class BitSet<
   }
 
   /**
-   * Toggles the specified bit in the bit set.
+   * Toggles the specified `bit` in the bit set.
    * @param {keyof T | number} bit
    * @returns {this}
    */
@@ -216,7 +216,7 @@ export class BitSet<
   }
 
   /**
-   * Returns an iterator that yields an array containing the bit flag and its corresponding value.
+   * Returns an iterator that yields an array containing the `bit` flag and its corresponding value.
    * @template U
    * @param {U} [bits]
    * @yields {U extends true ? [number, boolean] : [keyof T, boolean]}
@@ -236,7 +236,7 @@ export class BitSet<
   }
 
   /**
-   * Returns an iterator that yields an array containing the bit flag and its corresponding value.
+   * Returns an iterator that yields an array containing the `bit` flag and its corresponding value.
    * @template U
    * @yields {U extends true ? [number, boolean] : [keyof T, boolean]}
    */
@@ -245,7 +245,7 @@ export class BitSet<
   }
 
   /**
-   * Returns the current value of the bit set as a JSON-serializable value.
+   * Returns the current value as a serializable JSON value.
    * @returns {V extends number ? number : string}
    */
   toJSON(): V extends number ? number : string {
