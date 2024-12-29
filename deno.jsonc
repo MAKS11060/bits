@@ -1,6 +1,5 @@
 {
   "name": "@maks11060/bits",
-  "version": "0.0.0",
   "lock": false,
   "tasks": {
     "ci": "deno task publish-dry-run --allow-dirty && deno task test",
