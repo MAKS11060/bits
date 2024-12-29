@@ -18,8 +18,13 @@ jobs:
       - name: Set up Deno
         uses: denoland/setup-deno@v2
 
+      - name: Set version from release tag
+        uses: maks11060/deno-publish-version@v2
+        with:
+          tag: ${{ github.ref_name }}
+
       - name: Publish to JSR
-        run: deno publish --set-version $(echo "${{ github.ref_name }}" | sed 's/^v//')
+        run: deno publish --allow-dirty
 
       - name: Release
         uses: softprops/action-gh-release@v2
