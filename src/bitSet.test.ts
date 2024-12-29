@@ -1,6 +1,7 @@
 #!/usr/bin/env -S deno test -A --watch
 
 import {assertEquals} from 'jsr:@std/assert/equals'
+import {expect} from 'jsr:@std/expect'
 import {BitSet} from './bitSet.ts'
 
 Deno.test('BitSet.Instance from hex/bin', () => {
@@ -181,7 +182,86 @@ Deno.test('BitSet', async (t) => {
   })
 })
 
-{
+Deno.test('BitSet from obj', () => {
+  const fooBarFlags = BitSet.Instance({
+    foo: 1,
+    bar: 2,
+    baz: 31,
+
+    v1: 11,
+    v2: 12,
+    v3: 13,
+    v4: 14,
+    v5: 15,
+    v6: 15,
+  })
+
+  const fooBar = fooBarFlags.from({
+    bar: true,
+    baz: true,
+
+    v1: 1,
+    v2: 0,
+    v3: '',
+    v4: NaN,
+    v5: undefined,
+    v6: null,
+  })
+
+  expect(Object.fromEntries(fooBar)).toEqual({
+    foo: false,
+    bar: true,
+    baz: true,
+    v1: true,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false,
+  })
+})
+
+Deno.test('BitSet fromBigInt obj', () => {
+  const fooBarFlags = BitSet.Instance({
+    foo: 1,
+    bar: 2,
+    baz: 31,
+
+    v1: 111,
+    v2: 112,
+    v3: 113,
+    v4: 114,
+    v5: 115,
+    v6: 115,
+  })
+
+  const fooBar = fooBarFlags.fromBigInt({
+    bar: true,
+    baz: true,
+
+    v1: 1,
+    v2: 0,
+    v3: '',
+    v4: NaN,
+    v5: undefined,
+    v6: null,
+  })
+
+  expect(fooBar.value).toEqual(2596148429267413814265250312093700n)
+  expect(Object.fromEntries(fooBar)).toEqual({
+    foo: false,
+    bar: true,
+    baz: true,
+    v1: true,
+    v2: false,
+    v3: false,
+    v4: false,
+    v5: false,
+    v6: false,
+  })
+})
+
+/* {
   const Flags = BitSet.Instance()
 
   Flags.now()
@@ -213,4 +293,4 @@ Deno.test('BitSet', async (t) => {
   flags2.write('a', 'b', 'c')
 
   flags2.value // get typed value (number | bigint)
-}
+} */

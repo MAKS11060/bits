@@ -11,6 +11,12 @@ type BitSetInstance<
   I extends number | bigint = number
 > = {
   now: <V extends number | bigint = I>(value?: V) => BitSet<T, V>
+  from(
+    obj: Record<keyof T, boolean> | Record<string, unknown>
+  ): BitSet<T, number>
+  fromBigInt(
+    obj: Record<keyof T, boolean> | Record<string, unknown>
+  ): BitSet<T, bigint>
   fromHex: (value: string) => BitSet<T, number>
   fromBin: (value: string) => BitSet<T, number>
   fromHexBigInt: (value: `0x${string}`) => BitSet<T, bigint>
@@ -79,6 +85,24 @@ export class BitSet<
   >(options: T = {} as T): BitSetInstance<T, I> {
     return {
       now: (value) => new BitSet(options, value),
+      from: (obj) => {
+        const bitSet = new BitSet(options)
+        for (const key in obj as Record<keyof T, boolean>) {
+          if (options[key] && obj[key]) {
+            bitSet.set(key)
+          }
+        }
+        return bitSet
+      },
+      fromBigInt: (obj) => {
+        const bitSet = new BitSet<T, bigint>(options, 0n)
+        for (const key in obj as Record<keyof T, boolean>) {
+          if (options[key] && obj[key]) {
+            bitSet.set(key)
+          }
+        }
+        return bitSet
+      },
       fromHex: (value) => new BitSet(options, parseInt(value, 16)),
       fromBin: (value) => new BitSet(options, parseInt(value, 2)),
       fromHexBigInt: (value) => new BitSet(options, BigInt(value)),
@@ -251,6 +275,7 @@ export class BitSet<
   toJSON(): V extends number ? number : string {
     return typeof this.#value === 'number'
       ? this.#value
-      : (this.#value as any).toString()
+      : // deno-lint-ignore no-explicit-any
+        (this.#value as any).toString()
   }
 }
